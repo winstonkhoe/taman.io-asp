@@ -43,6 +43,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -69,15 +75,74 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\TamanDatabase.mdf" />
+    <Content Include="App_Data\TamanDatabase_log.ldf">
+      <DependentUpon>TamanDatabase.mdf</DependentUpon>
+    </Content>
+    <Content Include="Model\TamanModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TamanModel.edmx</DependentUpon>
+      <LastGenOutput>TamanModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\TamanModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TamanModel.edmx</DependentUpon>
+      <LastGenOutput>TamanModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factory\UserFactory.cs" />
+    <Compile Include="Model\artist.cs">
+      <DependentUpon>TamanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\design.cs">
+      <DependentUpon>TamanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\design_images.cs">
+      <DependentUpon>TamanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\garden_offers.cs">
+      <DependentUpon>TamanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\role.cs">
+      <DependentUpon>TamanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\seller.cs">
+      <DependentUpon>TamanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\service.cs">
+      <DependentUpon>TamanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\service_images.cs">
+      <DependentUpon>TamanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TamanModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TamanModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TamanModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TamanModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\TamanModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TamanModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\transaction_headers.cs">
+      <DependentUpon>TamanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\user.cs">
+      <DependentUpon>TamanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\wallet.cs">
+      <DependentUpon>TamanModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\DatabaseSingleton.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Model\TamanModel.edmx">
@@ -97,12 +162,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
-    <Folder Include="Factory\" />
     <Folder Include="Handler\" />
     <Folder Include="Report\" />
-    <Folder Include="Repository\" />
     <Folder Include="Utility\" />
     <Folder Include="View\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

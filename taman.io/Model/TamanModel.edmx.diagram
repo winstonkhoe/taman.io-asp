@@ -4,16 +4,30 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="129d187b46054473a0e056a2d7577187" Name="Diagram1" >
-        <EntityTypeShape EntityType="TamanModel.MsUser" Width="1.5" PointX="0.875" PointY="0.75" />
-        <EntityTypeShape EntityType="TamanModel.MsArtist" Width="1.5" PointX="2.875" PointY="0.75" />
-        <EntityTypeShape EntityType="TamanModel.MsDesign" Width="1.5" PointX="0.875" PointY="4.25" />
-        <AssociationConnector Association="TamanModel.MsArtistMsUser" />
-        <AssociationConnector Association="TamanModel.MsDesignMsUser" />
-        <EntityTypeShape EntityType="TamanModel.MsDesignImage" Width="1.5" PointX="3.375" PointY="4.25" IsExpanded="true" />
-        <AssociationConnector Association="TamanModel.MsDesignImageMsDesign" />
-        <EntityTypeShape EntityType="TamanModel.MsSeller" Width="1.5" PointX="4.875" PointY="0.75" />
-        <AssociationConnector Association="TamanModel.MsSellerMsUser" />
+      <Diagram DiagramId="42da5192ffb54b9bb9f076a12ad1fe46" Name="Diagram1">
+        <EntityTypeShape EntityType="TamanDatabaseModel.artist" Width="1.5" PointX="3" PointY="2.75" />
+        <EntityTypeShape EntityType="TamanDatabaseModel.design_images" Width="1.5" PointX="7.5" PointY="3.125" />
+        <EntityTypeShape EntityType="TamanDatabaseModel.design" Width="1.5" PointX="5.25" PointY="2.75" />
+        <EntityTypeShape EntityType="TamanDatabaseModel.garden_offers" Width="1.5" PointX="10.5" PointY="4.875" />
+        <EntityTypeShape EntityType="TamanDatabaseModel.role" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TamanDatabaseModel.seller" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="TamanDatabaseModel.service_images" Width="1.5" PointX="7.5" PointY="6.875" />
+        <EntityTypeShape EntityType="TamanDatabaseModel.service" Width="1.5" PointX="5.25" PointY="6.5" />
+        <EntityTypeShape EntityType="TamanDatabaseModel.transaction_headers" Width="1.5" PointX="12.75" PointY="6" />
+        <EntityTypeShape EntityType="TamanDatabaseModel.user" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="TamanDatabaseModel.wallet" Width="1.5" PointX="3" PointY="10.25" />
+        <AssociationConnector Association="TamanDatabaseModel.FK__artists__user_id__2A4B4B5E" />
+        <AssociationConnector Association="TamanDatabaseModel.FK__designs__artist___2E1BDC42" />
+        <AssociationConnector Association="TamanDatabaseModel.FK__design_im__desig__403A8C7D" />
+        <AssociationConnector Association="TamanDatabaseModel.FK__garden_of__desig__46E78A0C" />
+        <AssociationConnector Association="TamanDatabaseModel.FK__garden_of__selle__47DBAE45" />
+        <AssociationConnector Association="TamanDatabaseModel.FK__sellers__user_id__4316F928" />
+        <AssociationConnector Association="TamanDatabaseModel.FK__services__seller__4CA06362" />
+        <AssociationConnector Association="TamanDatabaseModel.FK__service_i__servi__4F7CD00D" />
+        <AssociationConnector Association="TamanDatabaseModel.FK__transacti__user___52593CB8" />
+        <AssociationConnector Association="TamanDatabaseModel.FK__wallets__user_id__5AEE82B9" />
+        <AssociationConnector Association="TamanDatabaseModel.transaction_detail_gardens" />
+        <AssociationConnector Association="TamanDatabaseModel.transaction_detail_services" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
