@@ -2,25 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using taman.io.Model;
 
 namespace taman.io.Factory
 {
     public class UserFactory
     {
-        public static user CreateEmployee(string email, string password, string name, DateTime dob, string gender, string phone, string address, int salary)
+        public static user Create(string name, string email, string password,  string phone, string address, string image)
         {
             return new user
             {
-                EmployeeAddress = address,
-                EmployeeDOB = dob,
-                EmployeeEmail = email,
-                EmployeeGender = gender,
-                EmployeeName = name,
-                EmployeePassword = password,
-                EmployeePhone = phone,
-                EmployeeSalary = salary
+                name = name,
+                email = email,
+                password = password,
+                phone = phone,
+                address = address,
+                image = image
             };
-
         }
     }
 }

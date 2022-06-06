@@ -18,7 +18,7 @@ namespace taman.io.Model
         public service()
         {
             this.service_images = new HashSet<service_images>();
-            this.transaction_headers = new HashSet<transaction_headers>();
+            this.transaction_detail_services = new HashSet<transaction_detail_services>();
         }
     
         public int id { get; set; }
@@ -27,12 +27,12 @@ namespace taman.io.Model
         public int estimation_day { get; set; }
         public int price { get; set; }
         public int seller_id { get; set; }
-        public byte[] created_at { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
     
         public virtual seller seller { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<service_images> service_images { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<transaction_headers> transaction_headers { get; set; }
+        public virtual ICollection<transaction_detail_services> transaction_detail_services { get; set; }
     }
 }

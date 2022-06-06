@@ -33,6 +33,8 @@ namespace taman.io.Model
         public virtual DbSet<seller> sellers { get; set; }
         public virtual DbSet<service_images> service_images { get; set; }
         public virtual DbSet<service> services { get; set; }
+        public virtual DbSet<transaction_detail_gardens> transaction_detail_gardens { get; set; }
+        public virtual DbSet<transaction_detail_services> transaction_detail_services { get; set; }
         public virtual DbSet<transaction_headers> transaction_headers { get; set; }
         public virtual DbSet<user> users { get; set; }
         public virtual DbSet<wallet> wallets { get; set; }

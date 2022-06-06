@@ -15,6 +15,6 @@ namespace taman.io.Model
     public partial class role
     {
         public int id { get; set; }
-        public byte[] created_at { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
     }
 }

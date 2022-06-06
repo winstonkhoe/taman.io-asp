@@ -30,7 +30,7 @@ namespace taman.io.Model
         public string phone { get; set; }
         public string address { get; set; }
         public string image { get; set; }
-        public byte[] created_at { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<artist> artists { get; set; }

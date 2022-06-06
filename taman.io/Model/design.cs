@@ -26,7 +26,7 @@ namespace taman.io.Model
         public string description { get; set; }
         public int artist_id { get; set; }
         public int price { get; set; }
-        public byte[] created_at { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
     
         public virtual artist artist { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -75,9 +75,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\TamanDatabase.mdf" />
-    <Content Include="App_Data\TamanDatabase_log.ldf">
-      <DependentUpon>TamanDatabase.mdf</DependentUpon>
+    <Content Include="App_Data\TamanDB.mdf" />
+    <Content Include="App_Data\TamanDB_log.ldf">
+      <DependentUpon>TamanDB.mdf</DependentUpon>
     </Content>
     <Content Include="Model\TamanModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -92,6 +92,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factory\ArtistFactory.cs" />
+    <Compile Include="Factory\DesignFactory.cs" />
+    <Compile Include="Factory\TransactionFactory.cs" />
+    <Compile Include="Factory\WalletFactory.cs" />
+    <Compile Include="Factory\GardenOfferFactory.cs" />
+    <Compile Include="Factory\SellerFactory.cs" />
+    <Compile Include="Factory\ServiceFactory.cs" />
+    <Compile Include="Factory\ServiceImagesFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
     <Compile Include="Model\artist.cs">
       <DependentUpon>TamanModel.tt</DependentUpon>
@@ -131,6 +139,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TamanModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\transaction_detail_gardens.cs">
+      <DependentUpon>TamanModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\transaction_detail_services.cs">
+      <DependentUpon>TamanModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\transaction_headers.cs">
       <DependentUpon>TamanModel.tt</DependentUpon>

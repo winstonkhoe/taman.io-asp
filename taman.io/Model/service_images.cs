@@ -17,7 +17,7 @@ namespace taman.io.Model
         public int id { get; set; }
         public int service_id { get; set; }
         public string filename { get; set; }
-        public byte[] created_at { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
     
         public virtual service service { get; set; }
     }

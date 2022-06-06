@@ -17,7 +17,7 @@ namespace taman.io.Model
         public int id { get; set; }
         public int design_id { get; set; }
         public string filename { get; set; }
-        public byte[] created_at { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
     
         public virtual design design { get; set; }
     }

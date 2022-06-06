@@ -29,7 +29,7 @@ namespace taman.io.Model
         public int reputation_point { get; set; }
         public int user_id { get; set; }
         public string image { get; set; }
-        public byte[] created_at { get; set; }
+        public Nullable<System.DateTime> created_at { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<garden_offers> garden_offers { get; set; }

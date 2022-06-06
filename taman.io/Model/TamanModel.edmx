@@ -14,7 +14,7 @@
           <Property Name="reputation_point" Type="int" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="image" Type="varchar" MaxLength="255" />
-          <Property Name="created_at" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="created_at" Type="datetime" />
         </EntityType>
         <EntityType Name="design_images">
           <Key>
@@ -23,7 +23,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="design_id" Type="int" Nullable="false" />
           <Property Name="filename" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="created_at" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="created_at" Type="datetime" />
         </EntityType>
         <EntityType Name="designs">
           <Key>
@@ -34,7 +34,7 @@
           <Property Name="description" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="artist_id" Type="int" Nullable="false" />
           <Property Name="price" Type="int" Nullable="false" />
-          <Property Name="created_at" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="created_at" Type="datetime" />
         </EntityType>
         <EntityType Name="garden_offers">
           <Key>
@@ -44,14 +44,15 @@
           <Property Name="design_id" Type="int" Nullable="false" />
           <Property Name="seller_id" Type="int" Nullable="false" />
           <Property Name="price" Type="int" Nullable="false" />
-          <Property Name="valid_to" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="valid_from" Type="datetime" />
+          <Property Name="valid_to" Type="datetime" />
         </EntityType>
         <EntityType Name="roles">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="created_at" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="created_at" Type="datetime" />
         </EntityType>
         <EntityType Name="sellers">
           <Key>
@@ -65,7 +66,7 @@
           <Property Name="reputation_point" Type="int" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
           <Property Name="image" Type="varchar" MaxLength="255" />
-          <Property Name="created_at" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="created_at" Type="datetime" />
         </EntityType>
         <EntityType Name="service_images">
           <Key>
@@ -74,7 +75,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="service_id" Type="int" Nullable="false" />
           <Property Name="filename" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="created_at" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="created_at" Type="datetime" />
         </EntityType>
         <EntityType Name="services">
           <Key>
@@ -86,7 +87,7 @@
           <Property Name="estimation_day" Type="int" Nullable="false" />
           <Property Name="price" Type="int" Nullable="false" />
           <Property Name="seller_id" Type="int" Nullable="false" />
-          <Property Name="created_at" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="created_at" Type="datetime" />
         </EntityType>
         <EntityType Name="transaction_detail_gardens">
           <Key>
@@ -95,9 +96,8 @@
           </Key>
           <Property Name="transaction_header_id" Type="int" Nullable="false" />
           <Property Name="garden_offer_id" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_DATA\TAMANDATABASE.MDF.dbo.transaction_detail_services' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="transaction_detail_services">
           <Key>
             <PropertyRef Name="transaction_header_id" />
@@ -105,6 +105,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
           </Key>
           <Property Name="transaction_header_id" Type="int" Nullable="false" />
           <Property Name="service_id" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="transaction_headers">
           <Key>
@@ -112,7 +113,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
-          <Property Name="created_at" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="created_at" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="users">
           <Key>
@@ -125,7 +126,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
           <Property Name="phone" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="address" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="image" Type="varchar" MaxLength="255" />
-          <Property Name="created_at" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="created_at" Type="datetime" />
         </EntityType>
         <EntityType Name="wallets">
           <Key>
@@ -134,9 +135,9 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="balance" Type="int" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
-          <Property Name="created_at" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="created_at" Type="datetime" />
         </EntityType>
-        <Association Name="FK__artists__user_id__2A4B4B5E">
+        <Association Name="FK__artists__user_id__276EDEB3">
           <End Role="users" Type="Self.users" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -150,7 +151,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__design_im__desig__403A8C7D">
+        <Association Name="FK__design_im__desig__300424B4">
           <End Role="designs" Type="Self.designs" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -164,7 +165,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__designs__artist___2E1BDC42">
+        <Association Name="FK__designs__artist___2C3393D0">
           <End Role="artists" Type="Self.artists" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -178,7 +179,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__garden_of__desig__46E78A0C">
+        <Association Name="FK__garden_of__desig__38996AB5">
           <End Role="designs" Type="Self.designs" Multiplicity="1" />
           <End Role="garden_offers" Type="Self.garden_offers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -190,7 +191,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__garden_of__selle__47DBAE45">
+        <Association Name="FK__garden_of__selle__398D8EEE">
           <End Role="sellers" Type="Self.sellers" Multiplicity="1" />
           <End Role="garden_offers" Type="Self.garden_offers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -202,7 +203,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__sellers__user_id__4316F928">
+        <Association Name="FK__sellers__user_id__33D4B598">
           <End Role="users" Type="Self.users" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -216,7 +217,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__service_i__servi__4F7CD00D">
+        <Association Name="FK__service_i__servi__44FF419A">
           <End Role="services" Type="Self.services" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -230,7 +231,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__services__seller__4CA06362">
+        <Association Name="FK__services__seller__412EB0B6">
           <End Role="sellers" Type="Self.sellers" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -244,7 +245,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__transacti__garde__5535A963">
+        <Association Name="FK__transacti__garde__4CA06362">
           <End Role="garden_offers" Type="Self.garden_offers" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -258,7 +259,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__transacti__servi__05D8E0BE">
+        <Association Name="FK__transacti__servi__4F7CD00D">
           <End Role="services" Type="Self.services" Multiplicity="1" />
           <End Role="transaction_detail_services" Type="Self.transaction_detail_services" Multiplicity="*" />
           <ReferentialConstraint>
@@ -270,19 +271,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__transacti__trans__04E4BC85">
-          <End Role="transaction_headers" Type="Self.transaction_headers" Multiplicity="1" />
-          <End Role="transaction_detail_services" Type="Self.transaction_detail_services" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="transaction_headers">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="transaction_detail_services">
-              <PropertyRef Name="transaction_header_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__transacti__trans__5441852A">
+        <Association Name="FK__transacti__trans__4BAC3F29">
           <End Role="transaction_headers" Type="Self.transaction_headers" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -296,7 +285,19 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__transacti__user___52593CB8">
+        <Association Name="FK__transacti__trans__4E88ABD4">
+          <End Role="transaction_headers" Type="Self.transaction_headers" Multiplicity="1" />
+          <End Role="transaction_detail_services" Type="Self.transaction_detail_services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transaction_headers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transaction_detail_services">
+              <PropertyRef Name="transaction_header_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__transacti__user___48CFD27E">
           <End Role="users" Type="Self.users" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -310,7 +311,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__wallets__user_id__5AEE82B9">
+        <Association Name="FK__wallets__user_id__52593CB8">
           <End Role="users" Type="Self.users" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -334,68 +335,63 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
           <EntitySet Name="service_images" EntityType="Self.service_images" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="services" EntityType="Self.services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="transaction_detail_gardens" EntityType="Self.transaction_detail_gardens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="transaction_detail_services" EntityType="Self.transaction_detail_services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="transaction_headers" EntityType="Self.transaction_headers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="wallets" EntityType="Self.wallets" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="transaction_detail_services" EntityType="Self.transaction_detail_services" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [transaction_detail_services].[transaction_header_id] AS [transaction_header_id], 
-    [transaction_detail_services].[service_id] AS [service_id]
-    FROM [dbo].[transaction_detail_services] AS [transaction_detail_services]</DefiningQuery>
-          </EntitySet>
-          <AssociationSet Name="FK__artists__user_id__2A4B4B5E" Association="Self.FK__artists__user_id__2A4B4B5E">
+          <AssociationSet Name="FK__artists__user_id__276EDEB3" Association="Self.FK__artists__user_id__276EDEB3">
             <End Role="users" EntitySet="users" />
             <End Role="artists" EntitySet="artists" />
           </AssociationSet>
-          <AssociationSet Name="FK__design_im__desig__403A8C7D" Association="Self.FK__design_im__desig__403A8C7D">
+          <AssociationSet Name="FK__design_im__desig__300424B4" Association="Self.FK__design_im__desig__300424B4">
             <End Role="designs" EntitySet="designs" />
             <End Role="design_images" EntitySet="design_images" />
           </AssociationSet>
-          <AssociationSet Name="FK__designs__artist___2E1BDC42" Association="Self.FK__designs__artist___2E1BDC42">
+          <AssociationSet Name="FK__designs__artist___2C3393D0" Association="Self.FK__designs__artist___2C3393D0">
             <End Role="artists" EntitySet="artists" />
             <End Role="designs" EntitySet="designs" />
           </AssociationSet>
-          <AssociationSet Name="FK__garden_of__desig__46E78A0C" Association="Self.FK__garden_of__desig__46E78A0C">
+          <AssociationSet Name="FK__garden_of__desig__38996AB5" Association="Self.FK__garden_of__desig__38996AB5">
             <End Role="designs" EntitySet="designs" />
             <End Role="garden_offers" EntitySet="garden_offers" />
           </AssociationSet>
-          <AssociationSet Name="FK__garden_of__selle__47DBAE45" Association="Self.FK__garden_of__selle__47DBAE45">
+          <AssociationSet Name="FK__garden_of__selle__398D8EEE" Association="Self.FK__garden_of__selle__398D8EEE">
             <End Role="sellers" EntitySet="sellers" />
             <End Role="garden_offers" EntitySet="garden_offers" />
           </AssociationSet>
-          <AssociationSet Name="FK__sellers__user_id__4316F928" Association="Self.FK__sellers__user_id__4316F928">
+          <AssociationSet Name="FK__sellers__user_id__33D4B598" Association="Self.FK__sellers__user_id__33D4B598">
             <End Role="users" EntitySet="users" />
             <End Role="sellers" EntitySet="sellers" />
           </AssociationSet>
-          <AssociationSet Name="FK__service_i__servi__4F7CD00D" Association="Self.FK__service_i__servi__4F7CD00D">
+          <AssociationSet Name="FK__service_i__servi__44FF419A" Association="Self.FK__service_i__servi__44FF419A">
             <End Role="services" EntitySet="services" />
             <End Role="service_images" EntitySet="service_images" />
           </AssociationSet>
-          <AssociationSet Name="FK__services__seller__4CA06362" Association="Self.FK__services__seller__4CA06362">
+          <AssociationSet Name="FK__services__seller__412EB0B6" Association="Self.FK__services__seller__412EB0B6">
             <End Role="sellers" EntitySet="sellers" />
             <End Role="services" EntitySet="services" />
           </AssociationSet>
-          <AssociationSet Name="FK__transacti__garde__5535A963" Association="Self.FK__transacti__garde__5535A963">
+          <AssociationSet Name="FK__transacti__garde__4CA06362" Association="Self.FK__transacti__garde__4CA06362">
             <End Role="garden_offers" EntitySet="garden_offers" />
             <End Role="transaction_detail_gardens" EntitySet="transaction_detail_gardens" />
           </AssociationSet>
-          <AssociationSet Name="FK__transacti__servi__05D8E0BE" Association="Self.FK__transacti__servi__05D8E0BE">
+          <AssociationSet Name="FK__transacti__servi__4F7CD00D" Association="Self.FK__transacti__servi__4F7CD00D">
             <End Role="services" EntitySet="services" />
             <End Role="transaction_detail_services" EntitySet="transaction_detail_services" />
           </AssociationSet>
-          <AssociationSet Name="FK__transacti__trans__04E4BC85" Association="Self.FK__transacti__trans__04E4BC85">
-            <End Role="transaction_headers" EntitySet="transaction_headers" />
-            <End Role="transaction_detail_services" EntitySet="transaction_detail_services" />
-          </AssociationSet>
-          <AssociationSet Name="FK__transacti__trans__5441852A" Association="Self.FK__transacti__trans__5441852A">
+          <AssociationSet Name="FK__transacti__trans__4BAC3F29" Association="Self.FK__transacti__trans__4BAC3F29">
             <End Role="transaction_headers" EntitySet="transaction_headers" />
             <End Role="transaction_detail_gardens" EntitySet="transaction_detail_gardens" />
           </AssociationSet>
-          <AssociationSet Name="FK__transacti__user___52593CB8" Association="Self.FK__transacti__user___52593CB8">
+          <AssociationSet Name="FK__transacti__trans__4E88ABD4" Association="Self.FK__transacti__trans__4E88ABD4">
+            <End Role="transaction_headers" EntitySet="transaction_headers" />
+            <End Role="transaction_detail_services" EntitySet="transaction_detail_services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__transacti__user___48CFD27E" Association="Self.FK__transacti__user___48CFD27E">
             <End Role="users" EntitySet="users" />
             <End Role="transaction_headers" EntitySet="transaction_headers" />
           </AssociationSet>
-          <AssociationSet Name="FK__wallets__user_id__5AEE82B9" Association="Self.FK__wallets__user_id__5AEE82B9">
+          <AssociationSet Name="FK__wallets__user_id__52593CB8" Association="Self.FK__wallets__user_id__52593CB8">
             <End Role="users" EntitySet="users" />
             <End Role="wallets" EntitySet="wallets" />
           </AssociationSet>
@@ -413,56 +409,66 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
           <EntitySet Name="sellers" EntityType="TamanDatabaseModel.seller" />
           <EntitySet Name="service_images" EntityType="TamanDatabaseModel.service_images" />
           <EntitySet Name="services" EntityType="TamanDatabaseModel.service" />
+          <EntitySet Name="transaction_detail_gardens" EntityType="TamanDatabaseModel.transaction_detail_gardens" />
+          <EntitySet Name="transaction_detail_services" EntityType="TamanDatabaseModel.transaction_detail_services" />
           <EntitySet Name="transaction_headers" EntityType="TamanDatabaseModel.transaction_headers" />
           <EntitySet Name="users" EntityType="TamanDatabaseModel.user" />
           <EntitySet Name="wallets" EntityType="TamanDatabaseModel.wallet" />
-          <AssociationSet Name="FK__artists__user_id__2A4B4B5E" Association="TamanDatabaseModel.FK__artists__user_id__2A4B4B5E">
+          <AssociationSet Name="FK__artists__user_id__276EDEB3" Association="TamanDatabaseModel.FK__artists__user_id__276EDEB3">
             <End Role="user" EntitySet="users" />
             <End Role="artist" EntitySet="artists" />
           </AssociationSet>
-          <AssociationSet Name="FK__designs__artist___2E1BDC42" Association="TamanDatabaseModel.FK__designs__artist___2E1BDC42">
+          <AssociationSet Name="FK__designs__artist___2C3393D0" Association="TamanDatabaseModel.FK__designs__artist___2C3393D0">
             <End Role="artist" EntitySet="artists" />
             <End Role="design" EntitySet="designs" />
           </AssociationSet>
-          <AssociationSet Name="FK__design_im__desig__403A8C7D" Association="TamanDatabaseModel.FK__design_im__desig__403A8C7D">
+          <AssociationSet Name="FK__design_im__desig__300424B4" Association="TamanDatabaseModel.FK__design_im__desig__300424B4">
             <End Role="design" EntitySet="designs" />
             <End Role="design_images" EntitySet="design_images" />
           </AssociationSet>
-          <AssociationSet Name="FK__garden_of__desig__46E78A0C" Association="TamanDatabaseModel.FK__garden_of__desig__46E78A0C">
+          <AssociationSet Name="FK__garden_of__desig__38996AB5" Association="TamanDatabaseModel.FK__garden_of__desig__38996AB5">
             <End Role="design" EntitySet="designs" />
             <End Role="garden_offers" EntitySet="garden_offers" />
           </AssociationSet>
-          <AssociationSet Name="FK__garden_of__selle__47DBAE45" Association="TamanDatabaseModel.FK__garden_of__selle__47DBAE45">
+          <AssociationSet Name="FK__garden_of__selle__398D8EEE" Association="TamanDatabaseModel.FK__garden_of__selle__398D8EEE">
             <End Role="seller" EntitySet="sellers" />
             <End Role="garden_offers" EntitySet="garden_offers" />
           </AssociationSet>
-          <AssociationSet Name="FK__sellers__user_id__4316F928" Association="TamanDatabaseModel.FK__sellers__user_id__4316F928">
+          <AssociationSet Name="FK__transacti__garde__4CA06362" Association="TamanDatabaseModel.FK__transacti__garde__4CA06362">
+            <End Role="garden_offers" EntitySet="garden_offers" />
+            <End Role="transaction_detail_gardens" EntitySet="transaction_detail_gardens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sellers__user_id__33D4B598" Association="TamanDatabaseModel.FK__sellers__user_id__33D4B598">
             <End Role="user" EntitySet="users" />
             <End Role="seller" EntitySet="sellers" />
           </AssociationSet>
-          <AssociationSet Name="FK__services__seller__4CA06362" Association="TamanDatabaseModel.FK__services__seller__4CA06362">
+          <AssociationSet Name="FK__services__seller__412EB0B6" Association="TamanDatabaseModel.FK__services__seller__412EB0B6">
             <End Role="seller" EntitySet="sellers" />
             <End Role="service" EntitySet="services" />
           </AssociationSet>
-          <AssociationSet Name="FK__service_i__servi__4F7CD00D" Association="TamanDatabaseModel.FK__service_i__servi__4F7CD00D">
+          <AssociationSet Name="FK__service_i__servi__44FF419A" Association="TamanDatabaseModel.FK__service_i__servi__44FF419A">
             <End Role="service" EntitySet="services" />
             <End Role="service_images" EntitySet="service_images" />
           </AssociationSet>
-          <AssociationSet Name="FK__transacti__user___52593CB8" Association="TamanDatabaseModel.FK__transacti__user___52593CB8">
+          <AssociationSet Name="FK__transacti__servi__4F7CD00D" Association="TamanDatabaseModel.FK__transacti__servi__4F7CD00D">
+            <End Role="service" EntitySet="services" />
+            <End Role="transaction_detail_services" EntitySet="transaction_detail_services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__transacti__trans__4BAC3F29" Association="TamanDatabaseModel.FK__transacti__trans__4BAC3F29">
+            <End Role="transaction_headers" EntitySet="transaction_headers" />
+            <End Role="transaction_detail_gardens" EntitySet="transaction_detail_gardens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__transacti__trans__4E88ABD4" Association="TamanDatabaseModel.FK__transacti__trans__4E88ABD4">
+            <End Role="transaction_headers" EntitySet="transaction_headers" />
+            <End Role="transaction_detail_services" EntitySet="transaction_detail_services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__transacti__user___48CFD27E" Association="TamanDatabaseModel.FK__transacti__user___48CFD27E">
             <End Role="user" EntitySet="users" />
             <End Role="transaction_headers" EntitySet="transaction_headers" />
           </AssociationSet>
-          <AssociationSet Name="FK__wallets__user_id__5AEE82B9" Association="TamanDatabaseModel.FK__wallets__user_id__5AEE82B9">
+          <AssociationSet Name="FK__wallets__user_id__52593CB8" Association="TamanDatabaseModel.FK__wallets__user_id__52593CB8">
             <End Role="user" EntitySet="users" />
             <End Role="wallet" EntitySet="wallets" />
-          </AssociationSet>
-          <AssociationSet Name="transaction_detail_gardens" Association="TamanDatabaseModel.transaction_detail_gardens">
-            <End Role="garden_offers" EntitySet="garden_offers" />
-            <End Role="transaction_headers" EntitySet="transaction_headers" />
-          </AssociationSet>
-          <AssociationSet Name="transaction_detail_services" Association="TamanDatabaseModel.transaction_detail_services">
-            <End Role="service" EntitySet="services" />
-            <End Role="transaction_headers" EntitySet="transaction_headers" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="artist">
@@ -474,9 +480,9 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
           <Property Name="reputation_point" Type="Int32" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="created_at" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="user" Relationship="TamanDatabaseModel.FK__artists__user_id__2A4B4B5E" FromRole="artist" ToRole="user" />
-          <NavigationProperty Name="designs" Relationship="TamanDatabaseModel.FK__designs__artist___2E1BDC42" FromRole="artist" ToRole="design" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="user" Relationship="TamanDatabaseModel.FK__artists__user_id__276EDEB3" FromRole="artist" ToRole="user" />
+          <NavigationProperty Name="designs" Relationship="TamanDatabaseModel.FK__designs__artist___2C3393D0" FromRole="artist" ToRole="design" />
         </EntityType>
         <EntityType Name="design_images">
           <Key>
@@ -485,8 +491,8 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="design_id" Type="Int32" Nullable="false" />
           <Property Name="filename" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="created_at" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="design" Relationship="TamanDatabaseModel.FK__design_im__desig__403A8C7D" FromRole="design_images" ToRole="design" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="design" Relationship="TamanDatabaseModel.FK__design_im__desig__300424B4" FromRole="design_images" ToRole="design" />
         </EntityType>
         <EntityType Name="design">
           <Key>
@@ -497,10 +503,10 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
           <Property Name="description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="artist_id" Type="Int32" Nullable="false" />
           <Property Name="price" Type="Int32" Nullable="false" />
-          <Property Name="created_at" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="artist" Relationship="TamanDatabaseModel.FK__designs__artist___2E1BDC42" FromRole="design" ToRole="artist" />
-          <NavigationProperty Name="design_images" Relationship="TamanDatabaseModel.FK__design_im__desig__403A8C7D" FromRole="design" ToRole="design_images" />
-          <NavigationProperty Name="garden_offers" Relationship="TamanDatabaseModel.FK__garden_of__desig__46E78A0C" FromRole="design" ToRole="garden_offers" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="artist" Relationship="TamanDatabaseModel.FK__designs__artist___2C3393D0" FromRole="design" ToRole="artist" />
+          <NavigationProperty Name="design_images" Relationship="TamanDatabaseModel.FK__design_im__desig__300424B4" FromRole="design" ToRole="design_images" />
+          <NavigationProperty Name="garden_offers" Relationship="TamanDatabaseModel.FK__garden_of__desig__38996AB5" FromRole="design" ToRole="garden_offers" />
         </EntityType>
         <EntityType Name="garden_offers">
           <Key>
@@ -510,17 +516,18 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
           <Property Name="design_id" Type="Int32" Nullable="false" />
           <Property Name="seller_id" Type="Int32" Nullable="false" />
           <Property Name="price" Type="Int32" Nullable="false" />
-          <Property Name="valid_to" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="design" Relationship="TamanDatabaseModel.FK__garden_of__desig__46E78A0C" FromRole="garden_offers" ToRole="design" />
-          <NavigationProperty Name="seller" Relationship="TamanDatabaseModel.FK__garden_of__selle__47DBAE45" FromRole="garden_offers" ToRole="seller" />
-          <NavigationProperty Name="transaction_headers" Relationship="TamanDatabaseModel.transaction_detail_gardens" FromRole="garden_offers" ToRole="transaction_headers" />
+          <Property Name="valid_from" Type="DateTime" Precision="3" />
+          <Property Name="valid_to" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="design" Relationship="TamanDatabaseModel.FK__garden_of__desig__38996AB5" FromRole="garden_offers" ToRole="design" />
+          <NavigationProperty Name="seller" Relationship="TamanDatabaseModel.FK__garden_of__selle__398D8EEE" FromRole="garden_offers" ToRole="seller" />
+          <NavigationProperty Name="transaction_detail_gardens" Relationship="TamanDatabaseModel.FK__transacti__garde__4CA06362" FromRole="garden_offers" ToRole="transaction_detail_gardens" />
         </EntityType>
         <EntityType Name="role">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="created_at" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="seller">
           <Key>
@@ -534,10 +541,10 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
           <Property Name="reputation_point" Type="Int32" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
           <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="created_at" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="garden_offers" Relationship="TamanDatabaseModel.FK__garden_of__selle__47DBAE45" FromRole="seller" ToRole="garden_offers" />
-          <NavigationProperty Name="user" Relationship="TamanDatabaseModel.FK__sellers__user_id__4316F928" FromRole="seller" ToRole="user" />
-          <NavigationProperty Name="services" Relationship="TamanDatabaseModel.FK__services__seller__4CA06362" FromRole="seller" ToRole="service" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="garden_offers" Relationship="TamanDatabaseModel.FK__garden_of__selle__398D8EEE" FromRole="seller" ToRole="garden_offers" />
+          <NavigationProperty Name="user" Relationship="TamanDatabaseModel.FK__sellers__user_id__33D4B598" FromRole="seller" ToRole="user" />
+          <NavigationProperty Name="services" Relationship="TamanDatabaseModel.FK__services__seller__412EB0B6" FromRole="seller" ToRole="service" />
         </EntityType>
         <EntityType Name="service_images">
           <Key>
@@ -546,8 +553,8 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="service_id" Type="Int32" Nullable="false" />
           <Property Name="filename" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="created_at" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="service" Relationship="TamanDatabaseModel.FK__service_i__servi__4F7CD00D" FromRole="service_images" ToRole="service" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="service" Relationship="TamanDatabaseModel.FK__service_i__servi__44FF419A" FromRole="service_images" ToRole="service" />
         </EntityType>
         <EntityType Name="service">
           <Key>
@@ -559,10 +566,32 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
           <Property Name="estimation_day" Type="Int32" Nullable="false" />
           <Property Name="price" Type="Int32" Nullable="false" />
           <Property Name="seller_id" Type="Int32" Nullable="false" />
-          <Property Name="created_at" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="seller" Relationship="TamanDatabaseModel.FK__services__seller__4CA06362" FromRole="service" ToRole="seller" />
-          <NavigationProperty Name="service_images" Relationship="TamanDatabaseModel.FK__service_i__servi__4F7CD00D" FromRole="service" ToRole="service_images" />
-          <NavigationProperty Name="transaction_headers" Relationship="TamanDatabaseModel.transaction_detail_services" FromRole="service" ToRole="transaction_headers" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="seller" Relationship="TamanDatabaseModel.FK__services__seller__412EB0B6" FromRole="service" ToRole="seller" />
+          <NavigationProperty Name="service_images" Relationship="TamanDatabaseModel.FK__service_i__servi__44FF419A" FromRole="service" ToRole="service_images" />
+          <NavigationProperty Name="transaction_detail_services" Relationship="TamanDatabaseModel.FK__transacti__servi__4F7CD00D" FromRole="service" ToRole="transaction_detail_services" />
+        </EntityType>
+        <EntityType Name="transaction_detail_gardens">
+          <Key>
+            <PropertyRef Name="transaction_header_id" />
+            <PropertyRef Name="garden_offer_id" />
+          </Key>
+          <Property Name="transaction_header_id" Type="Int32" Nullable="false" />
+          <Property Name="garden_offer_id" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="garden_offers" Relationship="TamanDatabaseModel.FK__transacti__garde__4CA06362" FromRole="transaction_detail_gardens" ToRole="garden_offers" />
+          <NavigationProperty Name="transaction_headers" Relationship="TamanDatabaseModel.FK__transacti__trans__4BAC3F29" FromRole="transaction_detail_gardens" ToRole="transaction_headers" />
+        </EntityType>
+        <EntityType Name="transaction_detail_services">
+          <Key>
+            <PropertyRef Name="transaction_header_id" />
+            <PropertyRef Name="service_id" />
+          </Key>
+          <Property Name="transaction_header_id" Type="Int32" Nullable="false" />
+          <Property Name="service_id" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="service" Relationship="TamanDatabaseModel.FK__transacti__servi__4F7CD00D" FromRole="transaction_detail_services" ToRole="service" />
+          <NavigationProperty Name="transaction_headers" Relationship="TamanDatabaseModel.FK__transacti__trans__4E88ABD4" FromRole="transaction_detail_services" ToRole="transaction_headers" />
         </EntityType>
         <EntityType Name="transaction_headers">
           <Key>
@@ -570,10 +599,10 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
-          <Property Name="created_at" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="user" Relationship="TamanDatabaseModel.FK__transacti__user___52593CB8" FromRole="transaction_headers" ToRole="user" />
-          <NavigationProperty Name="garden_offers" Relationship="TamanDatabaseModel.transaction_detail_gardens" FromRole="transaction_headers" ToRole="garden_offers" />
-          <NavigationProperty Name="services" Relationship="TamanDatabaseModel.transaction_detail_services" FromRole="transaction_headers" ToRole="service" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="transaction_detail_gardens" Relationship="TamanDatabaseModel.FK__transacti__trans__4BAC3F29" FromRole="transaction_headers" ToRole="transaction_detail_gardens" />
+          <NavigationProperty Name="transaction_detail_services" Relationship="TamanDatabaseModel.FK__transacti__trans__4E88ABD4" FromRole="transaction_headers" ToRole="transaction_detail_services" />
+          <NavigationProperty Name="user" Relationship="TamanDatabaseModel.FK__transacti__user___48CFD27E" FromRole="transaction_headers" ToRole="user" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -586,11 +615,11 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
           <Property Name="phone" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="address" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="created_at" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="artists" Relationship="TamanDatabaseModel.FK__artists__user_id__2A4B4B5E" FromRole="user" ToRole="artist" />
-          <NavigationProperty Name="sellers" Relationship="TamanDatabaseModel.FK__sellers__user_id__4316F928" FromRole="user" ToRole="seller" />
-          <NavigationProperty Name="transaction_headers" Relationship="TamanDatabaseModel.FK__transacti__user___52593CB8" FromRole="user" ToRole="transaction_headers" />
-          <NavigationProperty Name="wallets" Relationship="TamanDatabaseModel.FK__wallets__user_id__5AEE82B9" FromRole="user" ToRole="wallet" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="artists" Relationship="TamanDatabaseModel.FK__artists__user_id__276EDEB3" FromRole="user" ToRole="artist" />
+          <NavigationProperty Name="sellers" Relationship="TamanDatabaseModel.FK__sellers__user_id__33D4B598" FromRole="user" ToRole="seller" />
+          <NavigationProperty Name="transaction_headers" Relationship="TamanDatabaseModel.FK__transacti__user___48CFD27E" FromRole="user" ToRole="transaction_headers" />
+          <NavigationProperty Name="wallets" Relationship="TamanDatabaseModel.FK__wallets__user_id__52593CB8" FromRole="user" ToRole="wallet" />
         </EntityType>
         <EntityType Name="wallet">
           <Key>
@@ -599,10 +628,10 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="balance" Type="Int32" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
-          <Property Name="created_at" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <NavigationProperty Name="user" Relationship="TamanDatabaseModel.FK__wallets__user_id__5AEE82B9" FromRole="wallet" ToRole="user" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="user" Relationship="TamanDatabaseModel.FK__wallets__user_id__52593CB8" FromRole="wallet" ToRole="user" />
         </EntityType>
-        <Association Name="FK__artists__user_id__2A4B4B5E">
+        <Association Name="FK__artists__user_id__276EDEB3">
           <End Type="TamanDatabaseModel.user" Role="user" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -616,7 +645,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__designs__artist___2E1BDC42">
+        <Association Name="FK__designs__artist___2C3393D0">
           <End Type="TamanDatabaseModel.artist" Role="artist" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -630,7 +659,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__design_im__desig__403A8C7D">
+        <Association Name="FK__design_im__desig__300424B4">
           <End Type="TamanDatabaseModel.design" Role="design" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -644,7 +673,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__garden_of__desig__46E78A0C">
+        <Association Name="FK__garden_of__desig__38996AB5">
           <End Type="TamanDatabaseModel.design" Role="design" Multiplicity="1" />
           <End Type="TamanDatabaseModel.garden_offers" Role="garden_offers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -656,7 +685,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__garden_of__selle__47DBAE45">
+        <Association Name="FK__garden_of__selle__398D8EEE">
           <End Type="TamanDatabaseModel.seller" Role="seller" Multiplicity="1" />
           <End Type="TamanDatabaseModel.garden_offers" Role="garden_offers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -668,7 +697,21 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__sellers__user_id__4316F928">
+        <Association Name="FK__transacti__garde__4CA06362">
+          <End Type="TamanDatabaseModel.garden_offers" Role="garden_offers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TamanDatabaseModel.transaction_detail_gardens" Role="transaction_detail_gardens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="garden_offers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transaction_detail_gardens">
+              <PropertyRef Name="garden_offer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sellers__user_id__33D4B598">
           <End Type="TamanDatabaseModel.user" Role="user" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -682,7 +725,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__services__seller__4CA06362">
+        <Association Name="FK__services__seller__412EB0B6">
           <End Type="TamanDatabaseModel.seller" Role="seller" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -696,7 +739,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__service_i__servi__4F7CD00D">
+        <Association Name="FK__service_i__servi__44FF419A">
           <End Type="TamanDatabaseModel.service" Role="service" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -710,7 +753,45 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__transacti__user___52593CB8">
+        <Association Name="FK__transacti__servi__4F7CD00D">
+          <End Type="TamanDatabaseModel.service" Role="service" Multiplicity="1" />
+          <End Type="TamanDatabaseModel.transaction_detail_services" Role="transaction_detail_services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="service">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transaction_detail_services">
+              <PropertyRef Name="service_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__transacti__trans__4BAC3F29">
+          <End Type="TamanDatabaseModel.transaction_headers" Role="transaction_headers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TamanDatabaseModel.transaction_detail_gardens" Role="transaction_detail_gardens" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transaction_headers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transaction_detail_gardens">
+              <PropertyRef Name="transaction_header_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__transacti__trans__4E88ABD4">
+          <End Type="TamanDatabaseModel.transaction_headers" Role="transaction_headers" Multiplicity="1" />
+          <End Type="TamanDatabaseModel.transaction_detail_services" Role="transaction_detail_services" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="transaction_headers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="transaction_detail_services">
+              <PropertyRef Name="transaction_header_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__transacti__user___48CFD27E">
           <End Type="TamanDatabaseModel.user" Role="user" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -724,7 +805,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__wallets__user_id__5AEE82B9">
+        <Association Name="FK__wallets__user_id__52593CB8">
           <End Type="TamanDatabaseModel.user" Role="user" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -738,15 +819,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="transaction_detail_gardens">
-          <End Type="TamanDatabaseModel.garden_offers" Role="garden_offers" Multiplicity="*" />
-          <End Type="TamanDatabaseModel.transaction_headers" Role="transaction_headers" Multiplicity="*" />
-        </Association>
-        <Association Name="transaction_detail_services">
-          <End Type="TamanDatabaseModel.service" Role="service" Multiplicity="*" />
-          <End Type="TamanDatabaseModel.transaction_headers" Role="transaction_headers" Multiplicity="*" />
-        </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -790,6 +863,7 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
             <EntityTypeMapping TypeName="TamanDatabaseModel.garden_offers">
               <MappingFragment StoreEntitySet="garden_offers">
                 <ScalarProperty Name="valid_to" ColumnName="valid_to" />
+                <ScalarProperty Name="valid_from" ColumnName="valid_from" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="seller_id" ColumnName="seller_id" />
                 <ScalarProperty Name="design_id" ColumnName="design_id" />
@@ -843,6 +917,24 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="transaction_detail_gardens">
+            <EntityTypeMapping TypeName="TamanDatabaseModel.transaction_detail_gardens">
+              <MappingFragment StoreEntitySet="transaction_detail_gardens">
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="garden_offer_id" ColumnName="garden_offer_id" />
+                <ScalarProperty Name="transaction_header_id" ColumnName="transaction_header_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="transaction_detail_services">
+            <EntityTypeMapping TypeName="TamanDatabaseModel.transaction_detail_services">
+              <MappingFragment StoreEntitySet="transaction_detail_services">
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="service_id" ColumnName="service_id" />
+                <ScalarProperty Name="transaction_header_id" ColumnName="transaction_header_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="transaction_headers">
             <EntityTypeMapping TypeName="TamanDatabaseModel.transaction_headers">
               <MappingFragment StoreEntitySet="transaction_headers">
@@ -876,22 +968,6 @@ warning 6002: The table/view 'C:\USERS\WINST\SOURCE\REPOS\TAMAN.IO\TAMAN.IO\APP_
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="transaction_detail_gardens" TypeName="TamanDatabaseModel.transaction_detail_gardens" StoreEntitySet="transaction_detail_gardens">
-            <EndProperty Name="transaction_headers">
-              <ScalarProperty Name="id" ColumnName="transaction_header_id" />
-            </EndProperty>
-            <EndProperty Name="garden_offers">
-              <ScalarProperty Name="id" ColumnName="garden_offer_id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="transaction_detail_services" TypeName="TamanDatabaseModel.transaction_detail_services" StoreEntitySet="transaction_detail_services">
-            <EndProperty Name="transaction_headers">
-              <ScalarProperty Name="id" ColumnName="transaction_header_id" />
-            </EndProperty>
-            <EndProperty Name="service">
-              <ScalarProperty Name="id" ColumnName="service_id" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

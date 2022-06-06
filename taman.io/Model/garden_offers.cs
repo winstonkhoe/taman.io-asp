@@ -17,18 +17,19 @@ namespace taman.io.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public garden_offers()
         {
-            this.transaction_headers = new HashSet<transaction_headers>();
+            this.transaction_detail_gardens = new HashSet<transaction_detail_gardens>();
         }
     
         public int id { get; set; }
         public int design_id { get; set; }
         public int seller_id { get; set; }
         public int price { get; set; }
-        public byte[] valid_to { get; set; }
+        public Nullable<System.DateTime> valid_from { get; set; }
+        public Nullable<System.DateTime> valid_to { get; set; }
     
         public virtual design design { get; set; }
         public virtual seller seller { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<transaction_headers> transaction_headers { get; set; }
+        public virtual ICollection<transaction_detail_gardens> transaction_detail_gardens { get; set; }
     }
 }
