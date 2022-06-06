@@ -19,5 +19,15 @@ namespace taman.io.Factory
                 created_at = DateTime.Now
             };
         }
+
+        public static design_images CreateImage(int design_id, string filename)
+        {
+            return new design_images
+            {
+                design_id = design_id,
+                filename = filename,
+                created_at = DateTime.Now
+            };
+        }
     }
 }
