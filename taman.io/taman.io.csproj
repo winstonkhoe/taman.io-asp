@@ -100,6 +100,14 @@
     <Compile Include="Factory\SellerFactory.cs" />
     <Compile Include="Factory\ServiceFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
+    <Compile Include="Handler\ArtistHandler.cs" />
+    <Compile Include="Handler\DesignHandler.cs" />
+    <Compile Include="Handler\GardenOfferHandler.cs" />
+    <Compile Include="Handler\SellerHandler.cs" />
+    <Compile Include="Handler\ServiceHandler.cs" />
+    <Compile Include="Handler\TransactionHandler.cs" />
+    <Compile Include="Handler\UserRepository.cs" />
+    <Compile Include="Handler\WalletRepository.cs" />
     <Compile Include="Model\artist.cs">
       <DependentUpon>TamanModel.tt</DependentUpon>
     </Compile>
@@ -183,7 +191,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
-    <Folder Include="Handler\" />
     <Folder Include="Report\" />
     <Folder Include="View\" />
   </ItemGroup>
