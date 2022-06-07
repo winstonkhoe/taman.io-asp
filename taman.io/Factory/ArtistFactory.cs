@@ -8,7 +8,7 @@ namespace taman.io.Factory
 {
     public class ArtistFactory
     {
-        public static artist Create(String name, int reputation_point, int user_id, string image)
+        public static artist Create(string name, int reputation_point, int user_id, string image)
         {
             return new artist
             {

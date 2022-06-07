@@ -38,15 +38,5 @@ namespace taman.io.Repository
         {
             return db.design_images.Where(x => x.design_id == designId).ToList();
         }
-
-        public static List<transaction_detail_gardens> GetTransactionDetailGardens(int transactionId)
-        {
-            return db.transaction_detail_gardens.Where(x => x.transaction_header_id == transactionId).ToList();
-        }
-
-        public static List<transaction_detail_services> GetTransaction_Detail_Service(int transactionId)
-        {
-            return db.transaction_detail_services.Where(x => x.transaction_header_id == transactionId).ToList();
-        }
     }
 }

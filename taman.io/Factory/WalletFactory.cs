@@ -8,7 +8,7 @@ namespace taman.io.Factory
 {
     public class WalletFactory
     {
-        public static wallet Create(int user_id, int balance, string phone, string address, string image)
+        public static wallet Create(int user_id, int balance)
         {
             return new wallet
             {
