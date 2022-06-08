@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TamanDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TamanEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="artists" EntityType="TamanDatabaseModel.artist" />
+    <EntitySet Name="design_images" EntityType="TamanDatabaseModel.design_images" />
+    <EntitySet Name="designs" EntityType="TamanDatabaseModel.design" />
+    <EntitySet Name="garden_offers" EntityType="TamanDatabaseModel.garden_offers" />
+    <EntitySet Name="roles" EntityType="TamanDatabaseModel.role" />
+    <EntitySet Name="sellers" EntityType="TamanDatabaseModel.seller" />
+    <EntitySet Name="service_images" EntityType="TamanDatabaseModel.service_images" />
+    <EntitySet Name="services" EntityType="TamanDatabaseModel.service" />
+    <EntitySet Name="transaction_detail_gardens" EntityType="TamanDatabaseModel.transaction_detail_gardens" />
+    <EntitySet Name="transaction_detail_services" EntityType="TamanDatabaseModel.transaction_detail_services" />
+    <EntitySet Name="transaction_headers" EntityType="TamanDatabaseModel.transaction_headers" />
+    <EntitySet Name="users" EntityType="TamanDatabaseModel.user" />
+    <EntitySet Name="wallets" EntityType="TamanDatabaseModel.wallet" />
+    <AssociationSet Name="FK__artists__user_id__276EDEB3" Association="TamanDatabaseModel.FK__artists__user_id__276EDEB3">
+      <End Role="user" EntitySet="users" />
+      <End Role="artist" EntitySet="artists" />
+    </AssociationSet>
+    <AssociationSet Name="FK__designs__artist___2C3393D0" Association="TamanDatabaseModel.FK__designs__artist___2C3393D0">
+      <End Role="artist" EntitySet="artists" />
+      <End Role="design" EntitySet="designs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__design_im__desig__300424B4" Association="TamanDatabaseModel.FK__design_im__desig__300424B4">
+      <End Role="design" EntitySet="designs" />
+      <End Role="design_images" EntitySet="design_images" />
+    </AssociationSet>
+    <AssociationSet Name="FK__garden_of__desig__38996AB5" Association="TamanDatabaseModel.FK__garden_of__desig__38996AB5">
+      <End Role="design" EntitySet="designs" />
+      <End Role="garden_offers" EntitySet="garden_offers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__garden_of__selle__398D8EEE" Association="TamanDatabaseModel.FK__garden_of__selle__398D8EEE">
+      <End Role="seller" EntitySet="sellers" />
+      <End Role="garden_offers" EntitySet="garden_offers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacti__garde__4CA06362" Association="TamanDatabaseModel.FK__transacti__garde__4CA06362">
+      <End Role="garden_offers" EntitySet="garden_offers" />
+      <End Role="transaction_detail_gardens" EntitySet="transaction_detail_gardens" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sellers__user_id__33D4B598" Association="TamanDatabaseModel.FK__sellers__user_id__33D4B598">
+      <End Role="user" EntitySet="users" />
+      <End Role="seller" EntitySet="sellers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__services__seller__412EB0B6" Association="TamanDatabaseModel.FK__services__seller__412EB0B6">
+      <End Role="seller" EntitySet="sellers" />
+      <End Role="service" EntitySet="services" />
+    </AssociationSet>
+    <AssociationSet Name="FK__service_i__servi__44FF419A" Association="TamanDatabaseModel.FK__service_i__servi__44FF419A">
+      <End Role="service" EntitySet="services" />
+      <End Role="service_images" EntitySet="service_images" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacti__servi__4F7CD00D" Association="TamanDatabaseModel.FK__transacti__servi__4F7CD00D">
+      <End Role="service" EntitySet="services" />
+      <End Role="transaction_detail_services" EntitySet="transaction_detail_services" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacti__trans__4BAC3F29" Association="TamanDatabaseModel.FK__transacti__trans__4BAC3F29">
+      <End Role="transaction_headers" EntitySet="transaction_headers" />
+      <End Role="transaction_detail_gardens" EntitySet="transaction_detail_gardens" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacti__trans__4E88ABD4" Association="TamanDatabaseModel.FK__transacti__trans__4E88ABD4">
+      <End Role="transaction_headers" EntitySet="transaction_headers" />
+      <End Role="transaction_detail_services" EntitySet="transaction_detail_services" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacti__user___48CFD27E" Association="TamanDatabaseModel.FK__transacti__user___48CFD27E">
+      <End Role="user" EntitySet="users" />
+      <End Role="transaction_headers" EntitySet="transaction_headers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__wallets__user_id__52593CB8" Association="TamanDatabaseModel.FK__wallets__user_id__52593CB8">
+      <End Role="user" EntitySet="users" />
+      <End Role="wallet" EntitySet="wallets" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="artist">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="reputation_point" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="user" Relationship="TamanDatabaseModel.FK__artists__user_id__276EDEB3" FromRole="artist" ToRole="user" />
+    <NavigationProperty Name="designs" Relationship="TamanDatabaseModel.FK__designs__artist___2C3393D0" FromRole="artist" ToRole="design" />
+  </EntityType>
+  <EntityType Name="design_images">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="design_id" Type="Int32" Nullable="false" />
+    <Property Name="filename" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="design" Relationship="TamanDatabaseModel.FK__design_im__desig__300424B4" FromRole="design_images" ToRole="design" />
+  </EntityType>
+  <EntityType Name="design">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="artist_id" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="artist" Relationship="TamanDatabaseModel.FK__designs__artist___2C3393D0" FromRole="design" ToRole="artist" />
+    <NavigationProperty Name="design_images" Relationship="TamanDatabaseModel.FK__design_im__desig__300424B4" FromRole="design" ToRole="design_images" />
+    <NavigationProperty Name="garden_offers" Relationship="TamanDatabaseModel.FK__garden_of__desig__38996AB5" FromRole="design" ToRole="garden_offers" />
+  </EntityType>
+  <EntityType Name="garden_offers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="design_id" Type="Int32" Nullable="false" />
+    <Property Name="seller_id" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="valid_from" Type="DateTime" Precision="3" />
+    <Property Name="valid_to" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="design" Relationship="TamanDatabaseModel.FK__garden_of__desig__38996AB5" FromRole="garden_offers" ToRole="design" />
+    <NavigationProperty Name="seller" Relationship="TamanDatabaseModel.FK__garden_of__selle__398D8EEE" FromRole="garden_offers" ToRole="seller" />
+    <NavigationProperty Name="transaction_detail_gardens" Relationship="TamanDatabaseModel.FK__transacti__garde__4CA06362" FromRole="garden_offers" ToRole="transaction_detail_gardens" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="seller">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="city" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="reputation_point" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="garden_offers" Relationship="TamanDatabaseModel.FK__garden_of__selle__398D8EEE" FromRole="seller" ToRole="garden_offers" />
+    <NavigationProperty Name="user" Relationship="TamanDatabaseModel.FK__sellers__user_id__33D4B598" FromRole="seller" ToRole="user" />
+    <NavigationProperty Name="services" Relationship="TamanDatabaseModel.FK__services__seller__412EB0B6" FromRole="seller" ToRole="service" />
+  </EntityType>
+  <EntityType Name="service_images">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="service_id" Type="Int32" Nullable="false" />
+    <Property Name="filename" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="service" Relationship="TamanDatabaseModel.FK__service_i__servi__44FF419A" FromRole="service_images" ToRole="service" />
+  </EntityType>
+  <EntityType Name="service">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="estimation_day" Type="Int32" Nullable="false" />
+    <Property Name="price" Type="Int32" Nullable="false" />
+    <Property Name="seller_id" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="seller" Relationship="TamanDatabaseModel.FK__services__seller__412EB0B6" FromRole="service" ToRole="seller" />
+    <NavigationProperty Name="service_images" Relationship="TamanDatabaseModel.FK__service_i__servi__44FF419A" FromRole="service" ToRole="service_images" />
+    <NavigationProperty Name="transaction_detail_services" Relationship="TamanDatabaseModel.FK__transacti__servi__4F7CD00D" FromRole="service" ToRole="transaction_detail_services" />
+  </EntityType>
+  <EntityType Name="transaction_detail_gardens">
+    <Key>
+      <PropertyRef Name="transaction_header_id" />
+      <PropertyRef Name="garden_offer_id" />
+    </Key>
+    <Property Name="transaction_header_id" Type="Int32" Nullable="false" />
+    <Property Name="garden_offer_id" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="garden_offers" Relationship="TamanDatabaseModel.FK__transacti__garde__4CA06362" FromRole="transaction_detail_gardens" ToRole="garden_offers" />
+    <NavigationProperty Name="transaction_headers" Relationship="TamanDatabaseModel.FK__transacti__trans__4BAC3F29" FromRole="transaction_detail_gardens" ToRole="transaction_headers" />
+  </EntityType>
+  <EntityType Name="transaction_detail_services">
+    <Key>
+      <PropertyRef Name="transaction_header_id" />
+      <PropertyRef Name="service_id" />
+    </Key>
+    <Property Name="transaction_header_id" Type="Int32" Nullable="false" />
+    <Property Name="service_id" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="service" Relationship="TamanDatabaseModel.FK__transacti__servi__4F7CD00D" FromRole="transaction_detail_services" ToRole="service" />
+    <NavigationProperty Name="transaction_headers" Relationship="TamanDatabaseModel.FK__transacti__trans__4E88ABD4" FromRole="transaction_detail_services" ToRole="transaction_headers" />
+  </EntityType>
+  <EntityType Name="transaction_headers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="transaction_detail_gardens" Relationship="TamanDatabaseModel.FK__transacti__trans__4BAC3F29" FromRole="transaction_headers" ToRole="transaction_detail_gardens" />
+    <NavigationProperty Name="transaction_detail_services" Relationship="TamanDatabaseModel.FK__transacti__trans__4E88ABD4" FromRole="transaction_headers" ToRole="transaction_detail_services" />
+    <NavigationProperty Name="user" Relationship="TamanDatabaseModel.FK__transacti__user___48CFD27E" FromRole="transaction_headers" ToRole="user" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="artists" Relationship="TamanDatabaseModel.FK__artists__user_id__276EDEB3" FromRole="user" ToRole="artist" />
+    <NavigationProperty Name="sellers" Relationship="TamanDatabaseModel.FK__sellers__user_id__33D4B598" FromRole="user" ToRole="seller" />
+    <NavigationProperty Name="transaction_headers" Relationship="TamanDatabaseModel.FK__transacti__user___48CFD27E" FromRole="user" ToRole="transaction_headers" />
+    <NavigationProperty Name="wallets" Relationship="TamanDatabaseModel.FK__wallets__user_id__52593CB8" FromRole="user" ToRole="wallet" />
+  </EntityType>
+  <EntityType Name="wallet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="balance" Type="Int32" Nullable="false" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="user" Relationship="TamanDatabaseModel.FK__wallets__user_id__52593CB8" FromRole="wallet" ToRole="user" />
+  </EntityType>
+  <Association Name="FK__artists__user_id__276EDEB3">
+    <End Type="TamanDatabaseModel.user" Role="user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TamanDatabaseModel.artist" Role="artist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="artist">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__designs__artist___2C3393D0">
+    <End Type="TamanDatabaseModel.artist" Role="artist" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TamanDatabaseModel.design" Role="design" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="artist">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="design">
+        <PropertyRef Name="artist_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__design_im__desig__300424B4">
+    <End Type="TamanDatabaseModel.design" Role="design" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TamanDatabaseModel.design_images" Role="design_images" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="design">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="design_images">
+        <PropertyRef Name="design_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__garden_of__desig__38996AB5">
+    <End Type="TamanDatabaseModel.design" Role="design" Multiplicity="1" />
+    <End Type="TamanDatabaseModel.garden_offers" Role="garden_offers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="design">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="garden_offers">
+        <PropertyRef Name="design_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__garden_of__selle__398D8EEE">
+    <End Type="TamanDatabaseModel.seller" Role="seller" Multiplicity="1" />
+    <End Type="TamanDatabaseModel.garden_offers" Role="garden_offers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="seller">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="garden_offers">
+        <PropertyRef Name="seller_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacti__garde__4CA06362">
+    <End Type="TamanDatabaseModel.garden_offers" Role="garden_offers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TamanDatabaseModel.transaction_detail_gardens" Role="transaction_detail_gardens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="garden_offers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="transaction_detail_gardens">
+        <PropertyRef Name="garden_offer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sellers__user_id__33D4B598">
+    <End Type="TamanDatabaseModel.user" Role="user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TamanDatabaseModel.seller" Role="seller" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="seller">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__services__seller__412EB0B6">
+    <End Type="TamanDatabaseModel.seller" Role="seller" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TamanDatabaseModel.service" Role="service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="seller">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="service">
+        <PropertyRef Name="seller_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__service_i__servi__44FF419A">
+    <End Type="TamanDatabaseModel.service" Role="service" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TamanDatabaseModel.service_images" Role="service_images" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="service">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="service_images">
+        <PropertyRef Name="service_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacti__servi__4F7CD00D">
+    <End Type="TamanDatabaseModel.service" Role="service" Multiplicity="1" />
+    <End Type="TamanDatabaseModel.transaction_detail_services" Role="transaction_detail_services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="service">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="transaction_detail_services">
+        <PropertyRef Name="service_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacti__trans__4BAC3F29">
+    <End Type="TamanDatabaseModel.transaction_headers" Role="transaction_headers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TamanDatabaseModel.transaction_detail_gardens" Role="transaction_detail_gardens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transaction_headers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="transaction_detail_gardens">
+        <PropertyRef Name="transaction_header_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacti__trans__4E88ABD4">
+    <End Type="TamanDatabaseModel.transaction_headers" Role="transaction_headers" Multiplicity="1" />
+    <End Type="TamanDatabaseModel.transaction_detail_services" Role="transaction_detail_services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transaction_headers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="transaction_detail_services">
+        <PropertyRef Name="transaction_header_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacti__user___48CFD27E">
+    <End Type="TamanDatabaseModel.user" Role="user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TamanDatabaseModel.transaction_headers" Role="transaction_headers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="transaction_headers">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__wallets__user_id__52593CB8">
+    <End Type="TamanDatabaseModel.user" Role="user" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TamanDatabaseModel.wallet" Role="wallet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="wallet">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

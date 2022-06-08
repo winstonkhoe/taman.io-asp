@@ -79,6 +79,20 @@
     <Content Include="App_Data\TamanDB_log.ldf">
       <DependentUpon>TamanDB.mdf</DependentUpon>
     </Content>
+    <Content Include="css\design.css" />
+    <Content Include="css\global.css" />
+    <Content Include="css\home.css" />
+    <Content Include="css\login.css" />
+    <Content Include="css\seller.css" />
+    <Content Include="css\template.css" />
+    <Content Include="Image\Assets\logo.png" />
+    <Content Include="Image\Assets\logo_full.jpeg" />
+    <Content Include="Image\Assets\logo_full.png" />
+    <Content Include="Image\DefaultProfile.jpg" />
+    <Content Include="js\currency.js" />
+    <Content Include="js\design.js" />
+    <Content Include="js\file.js" />
+    <Content Include="js\jquery.min.js" />
     <Content Include="Model\TamanModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TamanModel.edmx</DependentUpon>
@@ -89,9 +103,19 @@
       <DependentUpon>TamanModel.edmx</DependentUpon>
       <LastGenOutput>TamanModel.cs</LastGenOutput>
     </Content>
+    <Content Include="View\Home.aspx" />
+    <Content Include="View\User\Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ArtistController.cs" />
+    <Compile Include="Controller\DesignController.cs" />
+    <Compile Include="Controller\GardenOfferController.cs" />
+    <Compile Include="Controller\SellerController.cs" />
+    <Compile Include="Controller\ServiceController.cs" />
+    <Compile Include="Controller\TransactionController.cs" />
+    <Compile Include="Controller\UserController.cs" />
+    <Compile Include="Controller\WalletController.cs" />
     <Compile Include="Factory\ArtistFactory.cs" />
     <Compile Include="Factory\DesignFactory.cs" />
     <Compile Include="Factory\TransactionFactory.cs" />
@@ -106,8 +130,8 @@
     <Compile Include="Handler\SellerHandler.cs" />
     <Compile Include="Handler\ServiceHandler.cs" />
     <Compile Include="Handler\TransactionHandler.cs" />
-    <Compile Include="Handler\UserRepository.cs" />
-    <Compile Include="Handler\WalletRepository.cs" />
+    <Compile Include="Handler\UserHandler.cs" />
+    <Compile Include="Handler\WalletHandler.cs" />
     <Compile Include="Model\artist.cs">
       <DependentUpon>TamanModel.tt</DependentUpon>
     </Compile>
@@ -172,6 +196,27 @@
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Repository\WalletRepository.cs" />
     <Compile Include="Utility\DatabaseSingleton.cs" />
+    <Compile Include="View\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Template.Master.cs">
+      <DependentUpon>Template.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Template.Master.designer.cs">
+      <DependentUpon>Template.Master</DependentUpon>
+    </Compile>
+    <Compile Include="View\User\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\User\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Model\TamanModel.edmx">
@@ -181,7 +226,9 @@
     <Content Include="Model\TamanModel.edmx.diagram">
       <DependentUpon>TamanModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Image\Assets\no_image.webp" />
     <None Include="packages.config" />
+    <Content Include="View\Template.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -190,9 +237,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\" />
     <Folder Include="Report\" />
-    <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

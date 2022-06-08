@@ -1,0 +1,41 @@
+.background {
+    /* background-color: var(--background-color); */
+}
+
+.product-card {
+    height: 350px;
+    border-radius: 12px;
+
+    overflow: hidden;
+    background-color: #FFF;
+    outline: 1px solid rgb(220, 235, 202);
+    transition: all .3s ease-in-out;
+}
+
+.product-card:hover {
+    /* outline-width: 1px; */
+    outline-color: var(--main-green-darker);
+    box-shadow:
+        0px 0px 40px rgba(0, 0, 0, 0.06),
+        0px 0px 40px rgba(0, 0, 0, 0.04),
+        0px 0px 40px rgba(0, 0, 0, 0.03),
+        0px 0px 40px rgba(0, 0, 0, 0.02);
+    /* outline: 1px solid var(--main-green-darker); */
+}
+
+.product-title {
+    font-size: 0.9rem;
+    margin: 0 0 10px 0;
+}
+
+.product-artist {
+    font-size: 0.7rem;
+}
+
+.card-separator {
+    margin: 0 10px;
+    height: 80px;
+    padding: 5px 0;
+    width: 1px;
+    background-color: rgb(141, 141, 141);
+}

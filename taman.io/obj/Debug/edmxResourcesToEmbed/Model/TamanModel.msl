@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TamanDatabaseModelStoreContainer" CdmEntityContainer="TamanEntities">
+    <EntitySetMapping Name="artists">
+      <EntityTypeMapping TypeName="TamanDatabaseModel.artist">
+        <MappingFragment StoreEntitySet="artists">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="reputation_point" ColumnName="reputation_point" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="design_images">
+      <EntityTypeMapping TypeName="TamanDatabaseModel.design_images">
+        <MappingFragment StoreEntitySet="design_images">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="design_id" ColumnName="design_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="designs">
+      <EntityTypeMapping TypeName="TamanDatabaseModel.design">
+        <MappingFragment StoreEntitySet="designs">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="artist_id" ColumnName="artist_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="garden_offers">
+      <EntityTypeMapping TypeName="TamanDatabaseModel.garden_offers">
+        <MappingFragment StoreEntitySet="garden_offers">
+          <ScalarProperty Name="valid_to" ColumnName="valid_to" />
+          <ScalarProperty Name="valid_from" ColumnName="valid_from" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="seller_id" ColumnName="seller_id" />
+          <ScalarProperty Name="design_id" ColumnName="design_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="TamanDatabaseModel.role">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sellers">
+      <EntityTypeMapping TypeName="TamanDatabaseModel.seller">
+        <MappingFragment StoreEntitySet="sellers">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="reputation_point" ColumnName="reputation_point" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="service_images">
+      <EntityTypeMapping TypeName="TamanDatabaseModel.service_images">
+        <MappingFragment StoreEntitySet="service_images">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="filename" ColumnName="filename" />
+          <ScalarProperty Name="service_id" ColumnName="service_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="services">
+      <EntityTypeMapping TypeName="TamanDatabaseModel.service">
+        <MappingFragment StoreEntitySet="services">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="seller_id" ColumnName="seller_id" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="estimation_day" ColumnName="estimation_day" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transaction_detail_gardens">
+      <EntityTypeMapping TypeName="TamanDatabaseModel.transaction_detail_gardens">
+        <MappingFragment StoreEntitySet="transaction_detail_gardens">
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="garden_offer_id" ColumnName="garden_offer_id" />
+          <ScalarProperty Name="transaction_header_id" ColumnName="transaction_header_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transaction_detail_services">
+      <EntityTypeMapping TypeName="TamanDatabaseModel.transaction_detail_services">
+        <MappingFragment StoreEntitySet="transaction_detail_services">
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="service_id" ColumnName="service_id" />
+          <ScalarProperty Name="transaction_header_id" ColumnName="transaction_header_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transaction_headers">
+      <EntityTypeMapping TypeName="TamanDatabaseModel.transaction_headers">
+        <MappingFragment StoreEntitySet="transaction_headers">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="TamanDatabaseModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wallets">
+      <EntityTypeMapping TypeName="TamanDatabaseModel.wallet">
+        <MappingFragment StoreEntitySet="wallets">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="balance" ColumnName="balance" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

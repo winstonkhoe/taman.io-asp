@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TamanDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="artists">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="reputation_point" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="image" Type="varchar" MaxLength="255" />
+    <Property Name="created_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="design_images">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="design_id" Type="int" Nullable="false" />
+    <Property Name="filename" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="designs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="artist_id" Type="int" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="garden_offers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="design_id" Type="int" Nullable="false" />
+    <Property Name="seller_id" Type="int" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="valid_from" Type="datetime" />
+    <Property Name="valid_to" Type="datetime" />
+  </EntityType>
+  <EntityType Name="roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="sellers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="city" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="reputation_point" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="image" Type="varchar" MaxLength="255" />
+    <Property Name="created_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="service_images">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="service_id" Type="int" Nullable="false" />
+    <Property Name="filename" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="services">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="estimation_day" Type="int" Nullable="false" />
+    <Property Name="price" Type="int" Nullable="false" />
+    <Property Name="seller_id" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="transaction_detail_gardens">
+    <Key>
+      <PropertyRef Name="transaction_header_id" />
+      <PropertyRef Name="garden_offer_id" />
+    </Key>
+    <Property Name="transaction_header_id" Type="int" Nullable="false" />
+    <Property Name="garden_offer_id" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="transaction_detail_services">
+    <Key>
+      <PropertyRef Name="transaction_header_id" />
+      <PropertyRef Name="service_id" />
+    </Key>
+    <Property Name="transaction_header_id" Type="int" Nullable="false" />
+    <Property Name="service_id" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="transaction_headers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="image" Type="varchar" MaxLength="255" />
+    <Property Name="created_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="wallets">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="balance" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__artists__user_id__276EDEB3">
+    <End Role="users" Type="Self.users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="artists" Type="Self.artists" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="artists">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__design_im__desig__300424B4">
+    <End Role="designs" Type="Self.designs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="design_images" Type="Self.design_images" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="designs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="design_images">
+        <PropertyRef Name="design_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__designs__artist___2C3393D0">
+    <End Role="artists" Type="Self.artists" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="designs" Type="Self.designs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="artists">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="designs">
+        <PropertyRef Name="artist_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__garden_of__desig__38996AB5">
+    <End Role="designs" Type="Self.designs" Multiplicity="1" />
+    <End Role="garden_offers" Type="Self.garden_offers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="designs">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="garden_offers">
+        <PropertyRef Name="design_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__garden_of__selle__398D8EEE">
+    <End Role="sellers" Type="Self.sellers" Multiplicity="1" />
+    <End Role="garden_offers" Type="Self.garden_offers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sellers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="garden_offers">
+        <PropertyRef Name="seller_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sellers__user_id__33D4B598">
+    <End Role="users" Type="Self.users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="sellers" Type="Self.sellers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sellers">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__service_i__servi__44FF419A">
+    <End Role="services" Type="Self.services" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="service_images" Type="Self.service_images" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="services">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="service_images">
+        <PropertyRef Name="service_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__services__seller__412EB0B6">
+    <End Role="sellers" Type="Self.sellers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="services" Type="Self.services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sellers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="services">
+        <PropertyRef Name="seller_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacti__garde__4CA06362">
+    <End Role="garden_offers" Type="Self.garden_offers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="transaction_detail_gardens" Type="Self.transaction_detail_gardens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="garden_offers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="transaction_detail_gardens">
+        <PropertyRef Name="garden_offer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacti__servi__4F7CD00D">
+    <End Role="services" Type="Self.services" Multiplicity="1" />
+    <End Role="transaction_detail_services" Type="Self.transaction_detail_services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="services">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="transaction_detail_services">
+        <PropertyRef Name="service_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacti__trans__4BAC3F29">
+    <End Role="transaction_headers" Type="Self.transaction_headers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="transaction_detail_gardens" Type="Self.transaction_detail_gardens" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transaction_headers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="transaction_detail_gardens">
+        <PropertyRef Name="transaction_header_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacti__trans__4E88ABD4">
+    <End Role="transaction_headers" Type="Self.transaction_headers" Multiplicity="1" />
+    <End Role="transaction_detail_services" Type="Self.transaction_detail_services" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="transaction_headers">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="transaction_detail_services">
+        <PropertyRef Name="transaction_header_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__transacti__user___48CFD27E">
+    <End Role="users" Type="Self.users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="transaction_headers" Type="Self.transaction_headers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="transaction_headers">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__wallets__user_id__52593CB8">
+    <End Role="users" Type="Self.users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="wallets" Type="Self.wallets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="wallets">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TamanDatabaseModelStoreContainer">
+    <EntitySet Name="artists" EntityType="Self.artists" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="design_images" EntityType="Self.design_images" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="designs" EntityType="Self.designs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="garden_offers" EntityType="Self.garden_offers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sellers" EntityType="Self.sellers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="service_images" EntityType="Self.service_images" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="services" EntityType="Self.services" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="transaction_detail_gardens" EntityType="Self.transaction_detail_gardens" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="transaction_detail_services" EntityType="Self.transaction_detail_services" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="transaction_headers" EntityType="Self.transaction_headers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="wallets" EntityType="Self.wallets" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__artists__user_id__276EDEB3" Association="Self.FK__artists__user_id__276EDEB3">
+      <End Role="users" EntitySet="users" />
+      <End Role="artists" EntitySet="artists" />
+    </AssociationSet>
+    <AssociationSet Name="FK__design_im__desig__300424B4" Association="Self.FK__design_im__desig__300424B4">
+      <End Role="designs" EntitySet="designs" />
+      <End Role="design_images" EntitySet="design_images" />
+    </AssociationSet>
+    <AssociationSet Name="FK__designs__artist___2C3393D0" Association="Self.FK__designs__artist___2C3393D0">
+      <End Role="artists" EntitySet="artists" />
+      <End Role="designs" EntitySet="designs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__garden_of__desig__38996AB5" Association="Self.FK__garden_of__desig__38996AB5">
+      <End Role="designs" EntitySet="designs" />
+      <End Role="garden_offers" EntitySet="garden_offers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__garden_of__selle__398D8EEE" Association="Self.FK__garden_of__selle__398D8EEE">
+      <End Role="sellers" EntitySet="sellers" />
+      <End Role="garden_offers" EntitySet="garden_offers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sellers__user_id__33D4B598" Association="Self.FK__sellers__user_id__33D4B598">
+      <End Role="users" EntitySet="users" />
+      <End Role="sellers" EntitySet="sellers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__service_i__servi__44FF419A" Association="Self.FK__service_i__servi__44FF419A">
+      <End Role="services" EntitySet="services" />
+      <End Role="service_images" EntitySet="service_images" />
+    </AssociationSet>
+    <AssociationSet Name="FK__services__seller__412EB0B6" Association="Self.FK__services__seller__412EB0B6">
+      <End Role="sellers" EntitySet="sellers" />
+      <End Role="services" EntitySet="services" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacti__garde__4CA06362" Association="Self.FK__transacti__garde__4CA06362">
+      <End Role="garden_offers" EntitySet="garden_offers" />
+      <End Role="transaction_detail_gardens" EntitySet="transaction_detail_gardens" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacti__servi__4F7CD00D" Association="Self.FK__transacti__servi__4F7CD00D">
+      <End Role="services" EntitySet="services" />
+      <End Role="transaction_detail_services" EntitySet="transaction_detail_services" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacti__trans__4BAC3F29" Association="Self.FK__transacti__trans__4BAC3F29">
+      <End Role="transaction_headers" EntitySet="transaction_headers" />
+      <End Role="transaction_detail_gardens" EntitySet="transaction_detail_gardens" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacti__trans__4E88ABD4" Association="Self.FK__transacti__trans__4E88ABD4">
+      <End Role="transaction_headers" EntitySet="transaction_headers" />
+      <End Role="transaction_detail_services" EntitySet="transaction_detail_services" />
+    </AssociationSet>
+    <AssociationSet Name="FK__transacti__user___48CFD27E" Association="Self.FK__transacti__user___48CFD27E">
+      <End Role="users" EntitySet="users" />
+      <End Role="transaction_headers" EntitySet="transaction_headers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__wallets__user_id__52593CB8" Association="Self.FK__wallets__user_id__52593CB8">
+      <End Role="users" EntitySet="users" />
+      <End Role="wallets" EntitySet="wallets" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
