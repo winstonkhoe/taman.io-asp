@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 using taman.io.Model;
 using taman.io.Repository;
 using System.Data.Entity;
+using taman.io.Controller;
+
 namespace taman.io.View.Common
 {
     public partial class WebForm1 : System.Web.UI.Page
@@ -17,7 +19,6 @@ namespace taman.io.View.Common
             List<design> designs = DesignController.GetDesigns();
             designRpt.DataSource = designs;
             designRpt.DataBind();
-            //var x = designs[0].design_images.ToList().FirstOrDefault().filename;
         }
 
         protected string GetImage(dynamic design)

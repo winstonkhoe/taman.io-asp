@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using taman.io.Controller;
 
 namespace taman.io.View.User
 {
@@ -11,37 +12,30 @@ namespace taman.io.View.User
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] != null)
+            {
+                Response.Redirect("~/View/Home.aspx");
+            }
+        }
+
+        protected void RegisterBtn_Click(object sender, EventArgs e)
+        {
             string name = FieldName.Text.Trim();
             string password = FieldPassword.Text.Trim();
             string confirmPassword = FieldConfirmPassword.Text.Trim();
             string email = FieldEmail.Text.Trim();
             string phone = FieldPhone.Text.Trim();
             string address = FieldAddress.Text.Trim();
-            if(name == "" || password == "" || email == "" || phone == "" || address == "")
-            {
-                LabelError.Text = "Fields cannot be empty!";
-            } else if()
-            {
 
-            }
-        }
-
-        protected void RegisterBtn_Click(object sender, EventArgs e)
-        {
-            string error = UserController.CreateMember(EmailTxt.Text,
-                PasswordTxt.Text, NameTxt.Text, DOBTxt.Text,
-                    (MaleRb.Checked || FemaleRb.Checked) ?
-                    ((MaleRb.Checked) ? MaleRb.Text : FemaleRb.Text)
-                    : null,
-                PhoneTxt.Text, AddressTxt.Text);
+            string error = UserController.RegisterUser(name, email, password, confirmPassword, phone, address, "");
             if (error == null)
             {
                 Response.Redirect("~/View/Guest/Login.aspx");
             }
             else
             {
-                ErrorLbl.Text = error;
-                ErrorLbl.Visible = true;
+                LabelError.Text = error;
+                LabelError.Visible = true;
             }
         }
     }

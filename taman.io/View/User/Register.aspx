@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/View/Template.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="taman.io.View.User.Register" %>
+﻿<%@ Page Title="Register | Taman.io" Language="C#" MasterPageFile="~/View/Template.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="taman.io.View.User.Register" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
@@ -63,12 +63,12 @@
                             </div>
                             <div class="w-75 d-flex align-items-center justify-center text-red-700 mb-2">
                                 <p class="m-0">
-                                    <asp:Label ID="LabelError" runat="server">
+                                    <asp:Label ID="LabelError" runat="server" Visible="false">
 
                                     </asp:Label>
                                 </p>
                             </div>
-                            <asp:Button ID="ButtonSubmit" runat="server" Text="Register" class="login-btn py-2" style="width: 30%"/>
+                            <asp:Button ID="ButtonSubmit" runat="server" Text="REGISTER" class="login-btn py-2" style="width: 30%" OnClick="RegisterBtn_Click"/>
                         </div>
                     </div>
                 </div>

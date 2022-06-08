@@ -17,9 +17,21 @@ namespace taman.io.Repository
         }
         public static user IsValidCredential(string email, string password)
         {
-            return db.users.
-                Where(x => x.email == email && x.password == password).
+            user user = db.users.
+                Where(x => x.email == email).
                 FirstOrDefault();
+
+            if(user != null)
+            {
+                return IsSamePassword(password, user.password) == true ? user : null;
+            }
+
+            return null;
+        }
+
+        public static bool IsSamePassword(string password, string hash)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, hash);
         }
     }
 }
