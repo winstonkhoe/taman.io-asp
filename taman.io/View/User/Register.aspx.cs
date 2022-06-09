@@ -30,7 +30,7 @@ namespace taman.io.View.User
             string error = UserController.RegisterUser(name, email, password, confirmPassword, phone, address, "");
             if (error == null)
             {
-                Response.Redirect("~/View/Guest/Login.aspx");
+                Response.Redirect("~/View/User/Login.aspx");
             }
             else
             {

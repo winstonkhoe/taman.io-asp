@@ -15,6 +15,23 @@ namespace taman.io.Repository
             db.users.Add(UserFactory.Create(name, email, password, phone, address, image));
             db.SaveChanges();
         }
+        
+        public static user UpdateProfile(string previousEmail, string name, string email, string phone, string address, string image)
+        {
+            user user = db.users.
+                Where(x => x.email == previousEmail).
+                FirstOrDefault();
+            if(user != null)
+            {
+                user.name = name;
+                user.email = email;
+                user.phone = phone;
+                user.address = address;
+                user.image = image;
+                db.SaveChanges();
+            }
+            return user;
+        }
         public static user IsValidCredential(string email, string password)
         {
             user user = db.users.

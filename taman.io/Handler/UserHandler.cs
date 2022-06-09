@@ -14,6 +14,11 @@ namespace taman.io.Handler
         {
             UserRepository.RegisterUser(name, email, password, phone, address, image);
         }
+        
+        public static user UpdateProfile(string previousEmail, string name, string email, string phone, string address, string image)
+        {
+            return UserRepository.UpdateProfile(previousEmail, name, email, phone, address, image);
+        }
         public static user IsValidCredential(string email, string password)
         {
             return UserRepository.IsValidCredential(email, password);

@@ -36,7 +36,7 @@ namespace taman.io.View.NewFolder1
                 
                 if (seller != null)
                 {
-                    LabelArtistName.Text = seller.name;
+                    LabelSellerName.Text = seller.name;
                     HyperlinkSeller.NavigateUrl = "~/Seller/Home.aspx";
                 } else
                 {

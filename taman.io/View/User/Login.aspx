@@ -26,15 +26,15 @@
                             <input type="checkbox" name="remember_me" id="">
                             <span class="ms-2 hyperlink">Remember Me</span>
                         </div>
-                        <a class="hyperlink" href="/register">Create Account</a>
+                        <a class="hyperlink" href="/View/User/Register.aspx">Create Account</a>
                     </div>
-                    <div class="w-75 d-flex align-items-center justify-center text-red-700 mb-2">
-                        <p class="m-0">
-                            <asp:Label ID="LabelError" runat="server">
+                    <div class="w-75 d-flex align-items-center mb-2 justify-content-center" style="color: red;">
+                                <p class="m-0">
+                                    <asp:Label ID="LabelError" runat="server" Visible="false">
 
-                            </asp:Label>
-                        </p>
-                    </div>
+                                    </asp:Label>
+                                </p>
+                            </div>
                     <asp:Button ID="ButtonSubmit" runat="server" Text="LOGIN" class="login-btn py-2" style="width: 30%" OnClick="LoginBtn_Click"/>
                 </div>
             </div>

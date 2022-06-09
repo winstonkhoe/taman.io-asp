@@ -124,6 +124,7 @@
     </Content>
     <Content Include="View\Home.aspx" />
     <Content Include="View\User\Login.aspx" />
+    <Content Include="View\User\Profile.aspx" />
     <Content Include="View\User\Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -236,6 +237,13 @@
     </Compile>
     <Compile Include="View\User\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\User\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\User\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\User\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>

@@ -65,17 +65,17 @@
 
                         <asp:Panel ID="PanelUserNavigations" runat="server">
                             <div class="nav-item">
-                                <a href="/profile" class="p-0 m-0 hyperlink">Profile</a>
+                                <a href="/View/User/Profile.aspx" class="p-0 m-0 hyperlink">Profile</a>
                             </div>
                             <div class="nav-item">
-                                <a href="/" class="p-0 m-0 hyperlink">Home</a>
+                                <a href="/View/Home.aspx" class="p-0 m-0 hyperlink">Home</a>
                             </div>
                             <div class="nav-item">
-                                <a href="/transactions" class="p-0 m-0 hyperlink">Transactions</a>
+                                <a href="/View/transactions" class="p-0 m-0 hyperlink">Transactions</a>
                             </div>
                             <ul class="d-flex flex-column justify-content-center align-items-center w-100 m-0 p-0">
                                 <li>
-                                    <a href="/logout" class="p-0 m-0">
+                                    <a href="/View/User/Logout.aspx" class="p-0 m-0">
                                     <div class="nav-item hyperlink">
                                         <i class="fa-solid fa-right-from-bracket"></i>
                                         <p class="p-0 m-0 ms-3">Logout</p>
@@ -87,10 +87,10 @@
 
                         <asp:Panel ID="PanelGuest" runat="server">
                             <div class="nav-item active">
-                                <a href="/register" class="p-0 m-0 hyperlink">Register</a>
+                                <a href="/View/User/Register.aspx" class="p-0 m-0 hyperlink">Register</a>
                             </div>
                             <div class="nav-item">
-                                <a href="/login" class="p-0 m-0 hyperlink">Login</a>
+                                <a href="/View/User/Login.aspx" class="p-0 m-0 hyperlink">Login</a>
                             </div>
                         </asp:Panel>
 

@@ -59,9 +59,9 @@
                                 </div>
                             </div>
                             <div class="w-75 d-flex justify-between mb-2 px-3">
-                                <a class="hyperlink" href="/login">Already have an account?</a>
+                                <a class="hyperlink" href="/View/User/Login.aspx">Already have an account?</a>
                             </div>
-                            <div class="w-75 d-flex align-items-center justify-center text-red-700 mb-2">
+                            <div class="w-75 d-flex align-items-center mb-2 justify-content-center" style="color: red;">
                                 <p class="m-0">
                                     <asp:Label ID="LabelError" runat="server" Visible="false">
 

@@ -31,6 +31,25 @@ namespace taman.io.Controller
             } 
             return error;
         }
+
+        public static string UpdateProfile(string previousEmail, string name, string email, string phone, string address, string image)
+        {
+            string error = null;
+            if (name == "" || email == "" || phone == "" || address == "")
+            {
+                error = "Fields cannot be empty!";
+            } else if (address.Length < 3)
+            {
+                error = "Address must be longer than 3 character!";
+            }
+
+            if(error == null)
+            {
+                UserHandler.UpdateProfile(previousEmail, name, email, phone, address, image);
+            }
+            return error;
+        }
+
         public static user IsValidCredential(string email, string password)
         {
             return UserHandler.IsValidCredential(email, password);
