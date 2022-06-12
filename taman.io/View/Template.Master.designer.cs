@@ -132,6 +132,24 @@ namespace taman.io.View.NewFolder1
         protected global::System.Web.UI.WebControls.Panel PanelUserNavigations;
 
         /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+
+        /// <summary>
+        /// ButtonLogout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonLogout;
+
+        /// <summary>
         /// PanelGuest control.
         /// </summary>
         /// <remarks>

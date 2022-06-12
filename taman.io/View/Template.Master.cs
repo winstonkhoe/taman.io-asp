@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -45,9 +46,17 @@ namespace taman.io.View.NewFolder1
                 }
             } else
             {
+                PanelGuest.Visible = true;
                 PanelUserNavigations.Visible = PanelArtistSeller.Visible = false;
                 LabelName.Text = "Guest";
             }
+        }
+
+        protected void ButtonLogout_Click(object sender, EventArgs e)
+        {
+            Session["user"] = null;
+            Response.Redirect(Request.RawUrl);
+            Debug.WriteLine("LOGOUT");
         }
     }
 }

@@ -8,7 +8,7 @@
             <asp:Repeater ID="designRpt" runat="server">
                 <ItemTemplate>
                     <div class="product-card  ms-4 mt-4 p-0" style="width: 230px">
-                    <a class="d-flex flex-column flex-grow-1" href='/design/<%# Eval("id") %>'>
+                    <a class="d-flex flex-column flex-grow-1" href='/View/Design/Home.aspx?id=<%# Eval("id") %>'>
                         <div class="w-100" style="height: 200px">
                             <asp:Image ID="Image1" class="w-100 h-100" alt="Design" style="object-fit: cover; object-position: center" runat="server" 
                                 ImageUrl='<%# "~/Image/" + GetImage(Container.DataItem) %>'

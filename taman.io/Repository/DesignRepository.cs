@@ -24,6 +24,11 @@ namespace taman.io.Repository
             return data;
         }
 
+        public static design GetDesign(int designId)
+        {
+            return db.designs.Where(x => x.id == designId).FirstOrDefault();
+        }
+        
         public static List<design> GetDesigns()
         {
             return db.designs.ToList();

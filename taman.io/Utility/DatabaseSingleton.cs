@@ -12,7 +12,7 @@ namespace taman.io.Repository
 
         public static TamanEntities Connections()
         {
-            return (db == null) ? new TamanEntities() : db;
+            return db ?? new TamanEntities();
         }
     }
 }

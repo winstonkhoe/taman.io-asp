@@ -97,7 +97,7 @@ input:-webkit-autofill:active{
     background-color: var(--soft-background);
 }
 
-button {
+.btn_green, button {
     border: none;
     background-color: var(--main-green);
     color: #FFF;
@@ -107,7 +107,7 @@ button {
     transition: all .3s ease-in-out;
 }
 
-button:hover {
+.btn_green:hover, button:hover {
     background-color: var(--main-green-darker);
 }
 

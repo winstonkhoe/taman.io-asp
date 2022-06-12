@@ -10,9 +10,14 @@ namespace taman.io.Handler
 {
     public class GardenOfferHandler
     {
-        public static garden_offers CreateService(int design_id, int seller_id, int price, string phone, string address, string image)
+        public static garden_offers CreateOffer(int design_id, int seller_id, int price)
         {
-            return GardenOfferRepository.CreateService(design_id, seller_id, price, phone, address, image);
+            return GardenOfferRepository.CreateOffer(design_id, seller_id, price);
+        }
+
+        public static void RemoveOffer(int design_id, int seller_id)
+        {
+            GardenOfferRepository.RemoveOffer(design_id, seller_id);
         }
 
         public static List<garden_offers> GetGardenOffers(int designId)

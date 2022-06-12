@@ -19,6 +19,10 @@ namespace taman.io.Controller
         {
             return DesignHandler.CreateDesignImage(design_id, filename);
         }
+        public static design GetDesign(int designId)
+        {
+            return DesignHandler.GetDesign(designId);
+        }
         public static List<design> GetDesigns()
         {
             return DesignHandler.GetDesigns();
@@ -30,6 +34,11 @@ namespace taman.io.Controller
         public static List<design_images> GetImages(int designId)
         {
             return DesignHandler.GetImages(designId);
+        }
+        public static string GetImage(dynamic design)
+        {
+            if (design == null || design.filename == "") return "~/Image/Assets/no_image.webp";
+            return "~/Image/" + design.filename;
         }
     }
 }

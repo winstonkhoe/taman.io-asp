@@ -18,6 +18,10 @@ namespace taman.io.Handler
         {
             return DesignRepository.CreateDesignImage(design_id, filename);
         }
+        public static design GetDesign(int designId)
+        {
+            return DesignRepository.GetDesign(designId);
+        }
         public static List<design> GetDesigns()
         {
             return DesignRepository.GetDesigns();

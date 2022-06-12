@@ -8,7 +8,7 @@ namespace taman.io.Factory
 {
     public class GardenOfferFactory
     {
-        public static garden_offers Create(int design_id, int seller_id, int price, string phone, string address, string image)
+        public static garden_offers Create(int design_id, int seller_id, int price)
         {
             return new garden_offers
             {

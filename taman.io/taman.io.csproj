@@ -122,10 +122,13 @@
       <DependentUpon>TamanModel.edmx</DependentUpon>
       <LastGenOutput>TamanModel.cs</LastGenOutput>
     </Content>
+    <Content Include="View\Contractor\Join.aspx" />
+    <Content Include="View\Design\Home.aspx" />
     <Content Include="View\Home.aspx" />
     <Content Include="View\User\Login.aspx" />
     <Content Include="View\User\Profile.aspx" />
     <Content Include="View\User\Register.aspx" />
+    <Content Include="View\User\Transactions.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +220,20 @@
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Repository\WalletRepository.cs" />
     <Compile Include="Utility\DatabaseSingleton.cs" />
+    <Compile Include="View\Contractor\Join.aspx.cs">
+      <DependentUpon>Join.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Contractor\Join.aspx.designer.cs">
+      <DependentUpon>Join.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Design\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Design\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -251,6 +268,13 @@
     </Compile>
     <Compile Include="View\User\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\User\Transactions.aspx.cs">
+      <DependentUpon>Transactions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\User\Transactions.aspx.designer.cs">
+      <DependentUpon>Transactions.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

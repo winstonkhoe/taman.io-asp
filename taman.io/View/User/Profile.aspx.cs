@@ -18,7 +18,7 @@ namespace taman.io.View.User
             if (user == null)
             {
                 Response.Redirect("~/View/User/Login.aspx");
-            } else
+            } else if(!IsPostBack)
             {
                 FieldName.Text = user.name;
                 FieldEmail.Text = user.email;
